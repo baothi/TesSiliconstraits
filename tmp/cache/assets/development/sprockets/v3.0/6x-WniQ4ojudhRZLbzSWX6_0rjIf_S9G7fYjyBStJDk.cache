@@ -1,0 +1,10 @@
+I"s(function() {
+  window.Home = (function() {
+    function Home() {}
+
+    return Home;
+
+  })();
+
+}).call(this);
+:ET

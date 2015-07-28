@@ -1,0 +1,28 @@
+= form_for @profile, html: { class: "form form-horizontal profile" } do |f|
+  .form-group
+    = f.label :name, class: 'control-label'
+    .controls
+      = f.text_field :name, class: 'form-control', required: true
+    = error_span(@profile[:name])
+  .form-group
+    = f.label :avatar, class: 'control-label'
+    .controls
+      .upload-preview
+        - if current_user.profile && current_user.profile.avatar
+          .round-image-51= image_tag(current_user.profile.avatar.url(:thumb))
+        -  else
+          .round-image-51
+            %img{:src => asset_path("thumb_missing.png")}/
+      = f.file_field :avatar, :class => "file"
+    = error_span(@profile[:avatar])
+  = f.submit nil,class: 'btn btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), profiles_path, :class => 'btn btn-default'
+/ .col-lg-6
+/     .upload-preview
+/       - if current_user.profile && current_user.profile.avatar
+/         .round-image-51= image_tag(current_user.profile.avatar.url(:thumb))
+/       -  else
+/         .round-image-51
+/           %img{:src => asset_path("thumb_missing.png")}/  
+/     / %input
+/     = f.file_field :avatar, :class => "file"

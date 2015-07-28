@@ -47,3 +47,8 @@ gem "haml-rails", "~> 0.9"
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
+gem 'devise'
+gem 'thin'
+gem 'rmagick'
+gem 'carrierwave'
+gem 'jcrop-rails-v2'

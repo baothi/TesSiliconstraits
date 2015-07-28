@@ -1,0 +1,8 @@
+I"(function() {
+  $(function() {
+    window.home = new Home;
+    return window.product = new Profile;
+  });
+
+}).call(this);
+:ET
