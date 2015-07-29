@@ -56,7 +56,7 @@ class ProfilesController < ApplicationController
         end
       else
         render :edit
-        render json: @profile.errors, status: :unprocessable_entity
+        # render json: @profile.errors, status: :unprocessable_entity
       end
     # end
   end

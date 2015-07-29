@@ -1,0 +1,13 @@
+= form_for @product, html: { class: "form form-horizontal product" } do |f|
+  .form-group
+    = f.label :nameproduct, class: 'control-label'
+    .controls
+      = f.text_field :nameproduct, class: 'form-control', required: true
+    = error_span(@product[:nameproduct])
+  .form-group
+    = f.label :avatar, class: 'control-label'
+    .controls
+      = f.text_field :avatar, class: 'form-control', required: true
+    = error_span(@product[:avatar])
+  = f.submit nil,class: 'btn btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), products_path, :class => 'btn btn-default'

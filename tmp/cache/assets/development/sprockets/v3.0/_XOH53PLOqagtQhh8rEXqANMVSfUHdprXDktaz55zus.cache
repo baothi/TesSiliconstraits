@@ -1,0 +1,9 @@
+I"Ë(function() {
+  jQuery(function() {
+    $("a[rel~=popover], .has-popover").popover();
+    $("a[rel~=tooltip], .has-tooltip").tooltip();
+    return $('.dropdown-toggle').dropdown();
+  });
+
+}).call(this);
+:ET

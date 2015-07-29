@@ -1,54 +1,27 @@
 .navbar.navbar-default.navbar-static-top
   .container
     .navbar-header
-      %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.navbar-brand{:href => "#"} TesSiliconstraits
+      %a.navbar-left{:href => "home.html"} <h1> TesSiliconstraits</h1>
     #navbar.navbar-collapse.collapse
-      %ul.nav.navbar-nav
-        %li.active
-          %a{:href => "#"} Home
-        %li
-          %a{:href => "#about"} About
-        %li
-          %a{:href => "#contact"} Contact
-        %li.dropdown
-          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            Dropdown
-            %span.caret
-          %ul.dropdown-menu
-            %li
-              %a{:href => "#"} Action
-            %li
-              %a{:href => "#"} Another action
-            %li
-              %a{:href => "#"} Something else here
-            %li.divider{:role => "separator"}
-            %li.dropdown-header Nav header
-            %li
-              %a{:href => "#"} Separated link
-            %li
-              %a{:href => "#"} One more separated link
+      %ul.nav.navbar-nav.navbar-brand
+        = render "share/search"
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li.dropdown
             %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-              Dropdown
-              %span.caret
+              - if current_user.profile && current_user.profile.avatar
+                .round-image-50= image_tag(current_user.profile.avatar.url(:thumb))
+              -  else
+                .round-image-50
+                  %img{:src => asset_path("mini_missing.png")}/
+              / %span.caret
             %ul.dropdown-menu
-              %li
-                %a{:href => "#"} Action
-              %li
-                %a{:href => "#"} Another action
-              %li
-                %a{:href => "#"} Something else here
-              %li.divider{:role => "separator"}
-              %li.dropdown-header Nav header
-              %li
-                %a{:href => "#"} Separated link
+              %li= link_to "#{current_user.email}"
+              %li= link_to "change password", edit_user_registration_path
+              - if current_user.profile
+                %li= link_to "update Profile", profile_path(current_user.profile)
+              - else
+                %li= link_to "new Profile", new_profile_path
               %li.active= link_to "Logout",destroy_user_session_path(:authenticity_token => form_authenticity_token()), :method => :delete
         - else
           %li= link_to "Login", new_user_session_path
