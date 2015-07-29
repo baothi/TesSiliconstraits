@@ -28,7 +28,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
     @profile.user_id = current_user.id
     @profile.avatar = params[:avatar]
-    respond_to do |format|
+    # respond_to do |format|
       if @profile.save
         if params[:profile][:avatar].present?
           render :crop
@@ -40,7 +40,7 @@ class ProfilesController < ApplicationController
         render :new
         # format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
-    end
+    # end
   end
 
   # PATCH/PUT /profiles/1
