@@ -22,7 +22,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   version :thumb do
     process :crop
-    resize_to_fill(100, 100)
+    resize_to_fill(600, 600)
   end
   
   def crop
