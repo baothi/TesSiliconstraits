@@ -26,9 +26,9 @@
   .well
     %tr
       %td.round-image-50
-        = image_tag @product.avatar_url(:thumb) if @product.avatar?
+        / = image_tag @product.avatar_url(:thumb) if @product.avatar?
       %td
-        = product.profile
+        / = product.name
     %br    
     %tr
       %td 
@@ -50,8 +50,9 @@
     %br
     %tr
       %td
-        %textarea#comment.form-control{:rows => "5"}
-        %input{:type => "button",:value => "submit",:id => "btn_submit"}
+        / %textarea#comment.form-control{:rows => "5"}
+        %textarea{:name => "comment",:id => "comment_content", :rows => "5",:cols => "97"}
+        / %input{:type => "button",:value => "submit",:id => "btn_submit"}
   / .well
   /   %tr
   /     %td.round-image-51
